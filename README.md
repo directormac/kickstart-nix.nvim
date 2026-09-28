@@ -42,11 +42,11 @@ If Nix and Neovim have one thing in common,
 it's that many new users don't know where to get started.
 Most Nix-based Neovim setups assume deep expertise in both realms,
 abstracting away Neovim's core functionalities
-as well as the Nix internals used to build a Neovim config. 
+as well as the Nix internals used to build a Neovim config.
 Frameworks and module-based DSLs are opinionated and difficult to diverge from
 with one's own modifications.
 
-`kickstart-nix.nvim` is different: 
+`kickstart-nix.nvim` is different:
 It's geared for users of all levels,
 making the migration of Neovim configurations to Nix straightforward.
 This project aims to be as simple as possible, while allowing
@@ -66,9 +66,9 @@ for maximum flexibility.
 - Configuration entirely in Lua[^1] (Vimscript is also possible).
   This makes it easy to migrate from non-nix dotfiles.
 - Use Neovim's built-in loading mechanisms. See:
-    - [`:h initialization`](https://neovim.io/doc/user/starting.html#initialization)
-    - [`:h runtimepath`](https://neovim.io/doc/user/options.html#'runtimepath')
-    - [`:h packadd`](https://neovim.io/doc/user/repeat.html#%3Apackadd)
+  - [`:h initialization`](https://neovim.io/doc/user/starting.html#initialization)
+  - [`:h runtimepath`](https://neovim.io/doc/user/options.html#'runtimepath')
+  - [`:h packadd`](https://neovim.io/doc/user/repeat.html#%3Apackadd)
 - Use Neovim's built-in LSP client, with Nix managing language servers.
 
 [^1]: The absence of a Nix module DSL for Neovim configuration is deliberate.
@@ -91,7 +91,7 @@ If you have Nix installed (with [flakes](https://wiki.nixos.org/wiki/Flakes) ena
 you can test drive this by running:
 
 ```console
-nix run "github:nix-community/kickstart-nix.nvim"
+nix run "github:directormac/kickstart-nix.nvim"
 ```
 
 ## :books: Usage
@@ -274,12 +274,12 @@ This requires a rebuild of the `nvim` derivation, but has the advantage
 that if anything breaks, it's only broken during your test run.
 
 When developing locally you might want to have a faster feedback loop.
-Normally the whole Neovim configuration is copied into the store and 
+Normally the whole Neovim configuration is copied into the store and
 the wrapper which nix generates for the derivation calls `nvim`
-with `-u /nix/store/path/to/generated-init.lua`. 
-We can deactivate this behavior with `wrapRc = false`, so that the 
-config is loaded from `$XDG_CONFIG_HOME/$NVIM_APPNAME`[^3], where 
-`$NVIM_APPNAME` defaults to `nvim` if the `appName` attribute is not set 
+with `-u /nix/store/path/to/generated-init.lua`.
+We can deactivate this behavior with `wrapRc = false`, so that the
+config is loaded from `$XDG_CONFIG_HOME/$NVIM_APPNAME`[^3], where
+`$NVIM_APPNAME` defaults to `nvim` if the `appName` attribute is not set
 in the `mkNeovim` function.
 
 The Flake exposes a dev shell with a `nvim-dev` package. The lua configuration in `./nvim`
@@ -288,9 +288,7 @@ is automatically symlinked to `~/.config/nvim-dev`.
 After activating the shell with `nix develop` or [nix-direnv](https://github.com/nix-community/nix-direnv)
 you can run Neovim with `nvim-dev` to automatically reload your lua configuration. All Nix changes still require a rebuild.
 
-
 [^3]: Assuming Linux. Refer to `:h initialization` for Darwin.
-
 
 ## :link: Alternative / similar projects
 
@@ -328,5 +326,3 @@ you can run Neovim with `nvim-dev` to automatically reload your lua configuratio
 [license-url]: https://github.com/nix-community/kickstart-nix.nvim/blob/master/LICENSE
 [issues-shield]: https://img.shields.io/github/issues/nix-community/kickstart-nix.nvim.svg?style=for-the-badge
 [issues-url]: https://github.com/nix-community/kickstart-nix.nvim/issues
-[license-shield]: https://img.shields.io/github/license/nix-community/kickstart-nix.nvim.svg?style=for-the-badge
-[license-url]: https://github.com/nix-community/kickstart-nix.nvim/blob/master/LICENSE
