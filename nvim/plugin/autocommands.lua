@@ -121,6 +121,20 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+
+-- Don't auto-wrap comments and don't insert comment leader after hitting 'o'.
+-- Do on `FileType` to always override these changes from filetype plugins.
+
+-- stylua: ignore
+vim.api.nvim_create_autocmd(
+  'FileType',
+  { callback =
+  function()
+    vim.cmd('setlocal formatoptions-=c formatoptions-=o')
+  end,
+  desc = 'Proper formatoptions' }
+)
+
 -- More examples, disabled by default
 
 -- Toggle between relative/absolute line numbers
